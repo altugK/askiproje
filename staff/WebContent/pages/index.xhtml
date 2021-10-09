@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="css.css"></h:outputStylesheet>
+</h:head>
+
+<body onload="#{util.hosgeldinMesaji()}">
+
+	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+		draggable="false" closable="false" resizable="false">
+		<p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+	</p:dialog>
+
+	<h:form id="indexform">
+		<p:growl id="growl" showDetail="true" sticky="false" life="7000" />
+
+		<p:layout fullPage="true">
+			<p:layoutUnit id="solTaraf" position="west" size="200" header="Menu"
+				resizable="false" closable="false" collapsible="false">
+				<ui:insert name="left">
+					<ui:include src="/pages/Menu.xhtml" />
+				</ui:insert>
+			</p:layoutUnit>
+
+			<p:layoutUnit id="ortaTaraf" position="center">
+			</p:layoutUnit>
+		</p:layout>
+
+
+	</h:form>
+
+
+</body>
+</html>

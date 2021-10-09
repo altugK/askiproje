@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANj--O4Kyhn2bQIAzH5L68Ypl0XmPzpwY"
+		type="text/javascript"></script>
+	<h:outputStylesheet library="css" name="css.css"></h:outputStylesheet>
+</h:head>
+<p:dialog header="Java EE" widgetVar="dlg1" showEffect="explode"
+	modal="true" hideEffect="bounce" height="300" width="400">
+	<p:graphicImage name="java.jpg" />
+</p:dialog>
+
+<p:dialog header="Object-oriented programming" widgetVar="dlg2"
+	showEffect="explode" modal="true" hideEffect="bounce" height="400"
+	width="400">
+	<p:graphicImage name="oop.png" />
+</p:dialog>
+<p:dialog header="Java Server Faces" widgetVar="dlg3"
+	showEffect="explode" modal="true" hideEffect="bounce" height="300"
+	width="400">
+	<p:graphicImage name="JSF.jpg" />
+</p:dialog>
+
+<p:dialog header="PrimeFaces" widgetVar="dlg4" showEffect="explode"
+	modal="true" hideEffect="bounce" height="400" width="650">
+	<p:graphicImage name="primefaces.jpg" />
+</p:dialog>
+<p:dialog header="JasperReports" widgetVar="dlg5" showEffect="explode"
+	modal="true" hideEffect="bounce" height="400" width="600">
+	<p:graphicImage name="jasper.jpg" />
+</p:dialog>
+<p:dialog header="JPA" widgetVar="dlg6" showEffect="explode"
+	modal="true" hideEffect="bounce" height="300" width="550">
+	<p:graphicImage name="jpa.jpg" />
+</p:dialog>
+
+<p:dialog header="Hibernate" widgetVar="dlg7" showEffect="explode"
+	modal="true" hideEffect="bounce" height="550" width="700">
+	<p:graphicImage name="hibernate.jpg" />
+</p:dialog>
+<p:dialog header="JPQL" widgetVar="dlg8" showEffect="explode"
+	modal="true" hideEffect="bounce" height="500" width="550">
+	<p:graphicImage name="jpql.jpg" />
+</p:dialog>
+<p:dialog header="SQL Server" widgetVar="dlg9" showEffect="explode"
+	modal="true" hideEffect="bounce" height="350" width="700">
+	<p:graphicImage name="sqlserver.jpg" />
+</p:dialog>
+
+<body>
+
+
+	<h:form id="indexCv">
+		<p:growl id="growl" showDetail="true" sticky="false" life="7000" />
+
+		<p:layout fullPage="true">
+			<p:layoutUnit id="solTaraf" position="west" size="200" header="Menu"
+				resizable="false" closable="false" collapsible="false">
+				<ui:insert name="left">
+					<ui:include src="/pages/Menu.xhtml" />
+				</ui:insert>
+			</p:layoutUnit>
+
+
+			<p:layoutUnit id="ortaTaraf" position="center">
+				<p:panelGrid columns="2">
+					<p:graphicImage name="foto.jpg" width="100" />
+					<p:column>
+						<h:outputText style="font-size:25px;" value="Altuğ Karakayalı" />
+						<h1></h1>
+						<h:outputText style="font-size:15px;" value="Bilgisayar Mühendisi" />
+					</p:column>
+				</p:panelGrid>
+
+				<p:tabView dynamic="true" cache="true">
+					<p:tab title="İletişim Bilgileri">
+
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:outputText style="font-size:20px;" value="E-Posta:" />
+							<h:outputLink value="mailto:altugkarakayali@gmail.com">
+								<h:outputText value="altugkarakayali@gmail.com"
+									style="font-size:15px;" />
+							</h:outputLink>
+							<h:outputText value="Cep Telefonu:" style="font-size:20px;" />
+							<h:outputText value="0545 722 56 45" style="font-size:15px;" />
+							<h:outputText value="Adres:" style="font-size:20px;" />
+							<f:view contentType="text/html">
+								<p:gmap center="37.055805, 35.281269" zoom="16" type="ROADMAP"
+									style="width:250%;height:200px" model="#{cvBean.simpleModel}" />
+							</f:view>
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Kişisel Bilgiler">
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:outputText style="font-size:20px;" value="Toplam Tecrübe:" />
+							<h:outputText style="font-size:15px;" value="1 yıl" />
+							<h:outputText style="font-size:20px;" value="Eğitim Durumu:" />
+							<h:outputText style="font-size:15px;" value="Üniversite (Mezun)" />
+							<h:outputText style="font-size:20px;" value="Medeni Durumu:" />
+							<h:outputText style="font-size:15px;" value="Bekar" />
+							<h:outputText style="font-size:20px;" value="Uyruk:" />
+							<h:outputText style="font-size:15px;"
+								value="Türkiye Cumhuriyeti:" />
+							<h:outputText style="font-size:20px;" value="Askerlik Durumu:" />
+							<h:outputText style="font-size:15px;"
+								value="Yapıldı (30.07.2017)" />
+							<h:outputText style="font-size:20px;" value="Doğum Tarihi:" />
+							<h:outputText style="font-size:15px;" value="13.10.1992" />
+							<h:outputText style="font-size:20px;" value="Doğum Yeri:" />
+							<h:outputText style="font-size:15px;" value="Adana/Karataş" />
+							<h:outputText style="font-size:20px;" value="Sürücü Belgesi:" />
+							<h:outputText style="font-size:15px;" value="B" />
+						</h:panelGrid>
+
+					</p:tab>
+					<p:tab title="Çalışma Teknolojileri">
+						<center>
+							<h:panelGrid columns="3" cellpadding="10">
+								<p:commandButton type="button" value="Java EE"
+									onclick="PF('dlg1').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="OOP"
+									onclick="PF('dlg2').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="JSF"
+									onclick="PF('dlg3').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="PrimeFaces"
+									onclick="PF('dlg4').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="Jasper Reports"
+									onclick="PF('dlg5').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="JPA"
+									onclick="PF('dlg6').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="Hibernate"
+									onclick="PF('dlg7').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="JPQL"
+									onclick="PF('dlg8').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+								<p:commandButton type="button" value="SQL Server"
+									onclick="PF('dlg9').show()" icon="ui-icon-extlink"
+									style=" font-size:25px; width:300px; height:100px" />
+
+							</h:panelGrid>
+
+						</center>
+					</p:tab>
+					<p:tab title="İş Deneyimleri">
+						<h:panelGrid columns="1" cellpadding="10">
+							<h:outputText style="font-size:20px;"
+								value="Yazılım Geliştirme Uzman Yardımcısı" />
+							<h:outputLink value="http://www.serasyazilim.com">
+								<h:outputText value="Seraş Kamu Yönetim Bilgi Sistemleri"
+									style="font-size:15px;" />
+							</h:outputLink>
+							<h:outputText style="font-size:15px;"
+								value="09.2017-... (3 ay) Adana - Türkiye Tam Zamanlı" />
+							<h:outputText style="font-size:13px;"
+								value="Elektronik Belge Yönetim Sistemleri,Kamu Yönetim,CRM ,İmar Numarataj ve
+                                      Tapu ,Muhasebe,Gelir,Tahakkuk,Tahsilat,Ruhsat modülleri raporlama ve yazılım geliştirme süreci." />
+							<hr />
+							<h:outputText style="font-size:20px;"
+								value="Bilgi İşlem Teknikeri" />
+							<h:outputLink value="https://www.facebook.com/FlexiLand/">
+								<h:outputText value="Flexi Trading" style="font-size:15px;" />
+							</h:outputLink>
+							<h:outputText style="font-size:15px;"
+								value="10.2015-06.2016 (8 ay) Serbest" />
+							<h:outputText style="font-size:13px;"
+								value="Sistem ve Sistem Altyapı Kurulumu,Sosyal Medya Uzmanlığı,Bilgi İslem Sorumlusu" />
+							<hr />
+							<h:outputText style="font-size:20px;"
+								value="Bilgi İşlem Stajyeri" />
+							<h:outputLink value="http://ekremtokrsh.saglik.gov.tr">
+								<h:outputText
+									value="Adana Ekrem Tok Ruh Sağlığı Ve Hastalıkları Hast."
+									style="font-size:15px;" />
+							</h:outputLink>
+							<h:outputText style="font-size:15px;"
+								value="11.2008-06.2009 (7 ay) Serbest" />
+							<h:outputText style="font-size:13px;"
+								value="Hastane Otomasyonu Yazılım Destek, Bilgi işlem Donanım Destek" />
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Eğitim Bilgileri">
+						<h:panelGrid columns="1" cellpadding="10">
+							<h:outputText style="font-size:20px;"
+								value="Doğu Akdeniz Üniversitesi -
+                                      (Üniversite (Lisans))" />
+							<h:outputText style="font-size:15px;" value="09.2013-09.2016" />
+							<h:outputText style="font-size:13px;"
+								value="Mühendislik Fakültesi, Bilgisayar
+                                      Mühendisliği - Başarı Bursu (%50)	&nbsp;	&nbsp;	&nbsp;	&nbsp;2,35/4" />
+							<hr />
+							<h:outputText style="font-size:20px;"
+								value="Çukurova Üniversitesi(Üniversite (Ön Lisans))" />
+							<h:outputText style="font-size:15px;" value="01.2010-06.2012" />
+							<h:outputText style="font-size:13px;"
+								value="Teknik Bilimler Meslek Yüksekokulu, Bilgisayar
+                                      Programcılığı	&nbsp;	&nbsp;	&nbsp;	&nbsp;2.72/4" />
+							<hr />
+							<h:outputText style="font-size:20px;"
+								value="Nurten Yetimoğlu Teknik Anadolu Lisesi(Lise)" />
+							<h:outputText style="font-size:15px;" value="06.2010-06.2014" />
+							<h:outputText style="font-size:13px;"
+								value="Bilgisayar 	&nbsp;	&nbsp;	&nbsp;	&nbsp;70/100" />
+							<hr />
+
+						</h:panelGrid>
+					</p:tab>
+
+					<p:tab title="Yetkinlikler">
+						<h:panelGrid columns="1" cellpadding="10">
+							<h:outputText style="font-size:20px;"
+								value="Programming and Soft Computing" />
+							<h:outputText style="font-size:15px;"
+								value="Doğu Akdeniz Üniversitesi - 06.2016" />
+							<h:outputText style="font-size:13px;"
+								value="Certificate of Specialization" />
+							<hr />
+							<h:outputText style="font-size:20px;"
+								value="Best Project for 2015-2016 Spring Semester" />
+							<h:outputText style="font-size:15px;"
+								value="Doğu Akdeniz Üniversitesi - 06.2016" />
+							<h:outputText style="font-size:13px;"
+								value="Certificate of Excellence" />
+							<hr />
+							<h:outputText style="font-size:20px;"
+								value="High Honour for 2015-2016 Spring Semester" />
+							<h:outputText style="font-size:15px;"
+								value="Doğu Akdeniz Üniversitesi - 06.2016" />
+							<h:outputText style="font-size:13px;"
+								value="Certificate of High Honour" />
+
+						</h:panelGrid>
+					</p:tab>
+				</p:tabView>
+			</p:layoutUnit>
+		</p:layout>
+
+	</h:form>
+
+
+</body>
+</html>

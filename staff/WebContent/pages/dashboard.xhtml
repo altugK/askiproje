@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANj--O4Kyhn2bQIAzH5L68Ypl0XmPzpwY"
+		type="text/javascript"></script>
+	<h:outputStylesheet library="css" name="css.css"></h:outputStylesheet>
+</h:head>
+<p:dialog header="Java EE" widgetVar="dlg1" showEffect="explode"
+	modal="true" hideEffect="bounce" height="300" width="400">
+	<p:graphicImage name="java.jpg" />
+</p:dialog>
+
+<p:dialog header="Object-oriented programming" widgetVar="dlg2"
+	showEffect="explode" modal="true" hideEffect="bounce" height="400"
+	width="400">
+	<p:graphicImage name="oop.png" />
+</p:dialog>
+<p:dialog header="Java Server Faces" widgetVar="dlg3"
+	showEffect="explode" modal="true" hideEffect="bounce" height="300"
+	width="400">
+	<p:graphicImage name="JSF.jpg" />
+</p:dialog>
+
+<p:dialog header="PrimeFaces" widgetVar="dlg4" showEffect="explode"
+	modal="true" hideEffect="bounce" height="400" width="650">
+	<p:graphicImage name="primefaces.jpg" />
+</p:dialog>
+<p:dialog header="JasperReports" widgetVar="dlg5" showEffect="explode"
+	modal="true" hideEffect="bounce" height="400" width="600">
+	<p:graphicImage name="jasper.jpg" />
+</p:dialog>
+<p:dialog header="JPA" widgetVar="dlg6" showEffect="explode"
+	modal="true" hideEffect="bounce" height="300" width="550">
+	<p:graphicImage name="jpa.jpg" />
+</p:dialog>
+
+<p:dialog header="Hibernate" widgetVar="dlg7" showEffect="explode"
+	modal="true" hideEffect="bounce" height="550" width="700">
+	<p:graphicImage name="hibernate.jpg" />
+</p:dialog>
+<p:dialog header="JPQL" widgetVar="dlg8" showEffect="explode"
+	modal="true" hideEffect="bounce" height="500" width="550">
+	<p:graphicImage name="jpql.jpg" />
+</p:dialog>
+<p:dialog header="SQL Server" widgetVar="dlg9" showEffect="explode"
+	modal="true" hideEffect="bounce" height="350" width="700">
+	<p:graphicImage name="sqlserver.jpg" />
+</p:dialog>
+
+<body>
+
+
+	<h:form id="indexCv">
+		<p:growl id="growl" showDetail="true" sticky="false" life="7000" />
+
+		<p:layout fullPage="true">
+			<p:layoutUnit id="solTaraf" position="west" size="200" header="Menu"
+				resizable="false" closable="false" collapsible="false">
+				<ui:insert name="left">
+					<ui:include src="/pages/Menu.xhtml" />
+				</ui:insert>
+			</p:layoutUnit>
+
+
+			<p:layoutUnit id="ortaTaraf" position="center">
+				<iframe
+					src="http://localhost:3000/public/dashboard/3fde74b1-354d-4ad9-87ab-f130e246f2e4"
+					frameborder="0" width="1600" height="1200"> </iframe>
+			</p:layoutUnit>
+		</p:layout>
+
+	</h:form>
+
+
+</body>
+</html>

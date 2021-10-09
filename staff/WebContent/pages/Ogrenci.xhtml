@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="css.css"></h:outputStylesheet>
+</h:head>
+
+<body onload="#{ogrenciBean.sayfaYenile()}">
+	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+		draggable="false" closable="false" resizable="false">
+		<p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+	</p:dialog>
+
+
+	<p:layout fullPage="true">
+		<p:layoutUnit id="solTaraf" position="west" size="200" header="Menu"
+			resizable="false" closable="false" collapsible="false">
+			<ui:insert name="left">
+				<ui:include src="/pages/Menu.xhtml" />
+			</ui:insert>
+		</p:layoutUnit>
+
+
+		<p:layoutUnit id="ortaTaraf" position="center">
+			<h:form id="frmOgrenci">
+				<p:growl id="growl" showDetail="true" sticky="false" life="7000" />
+				<p:panel id="panel" style="border:none">
+
+					<h:panelGrid columns="8" id="panelGridid">
+
+
+						<p:outputLabel value="Ogrenci No : " />
+						<p:inputText id="ogrenciNo"
+							value="#{ogrenciBean.ogrenci.ogrenciNo}" />
+
+						<p:outputLabel value="Öğrenci'nin Adi : " />
+						<p:inputText id="ogrenciAdi"
+							value="#{ogrenciBean.ogrenci.ogrenciAdi}" />
+
+						<p:outputLabel value="Öğrenci'nin Soyadi : " />
+						<p:inputText id="ogrenciSoyAdi"
+							value="#{ogrenciBean.ogrenci.soyAdi}" />
+
+						<p:selectOneMenu id="ogrenciSinif"
+							value="#{ogrenciBean.ogrenci.sinifId}">
+							<f:selectItems value="#{ogrenciBean.sinifServices.selectAll()}"
+								var="o" itemLabel="#{o.sinifAdi}" itemValue="#{o.sinifId}" />
+						</p:selectOneMenu>
+
+						<center>
+							<p:column>
+
+								<p:commandButton id="saveId" update=":frmOgrenci:panel growl"
+									rendered="#{ogrenciBean.kaydetGuncelleRendered}"
+									actionListener="#{ogrenciBean.insert()}" value="Kaydet" />
+
+								<p:commandButton id="updateeId" update=":frmOgrenci:panel growl"
+									rendered="#{!ogrenciBean.kaydetGuncelleRendered}"
+									actionListener="#{ogrenciBean.update()}" value="Güncelle" />
+
+								<p:commandButton ajax="false"
+									actionListener="#{ogrenciBean.ogrenciReport()}"
+									onclick="PrimeFaces.monitorDownload(start, stop);"
+									icon="ui-icon-arrowthick-1-s" value="Pdf">
+									<p:fileDownload value="#{ogrenciBean.file}" />
+								</p:commandButton>
+
+							</p:column>
+						</center>
+
+					</h:panelGrid>
+
+					<p:dataTable var="ogrenciList"
+						value="#{ogrenciBean.ogrenciDataModelList}"
+						emptyMessage="Ogrenci Bulunamadı" id="ogrenciDataTableid"
+						filteredValue="#{ogrenciBean.filteredOgrenci}" scrollable="true"
+						scrollHeight="670" widgetVar="ogrenciListvar">
+						<f:facet name="headertxt">Öğrenciler</f:facet>
+						<f:facet name="header">
+							<p:outputPanel>
+								<h:outputText value="Bütün Tabloda Ara:" />
+								<p:inputText id="globalFilter"
+									onkeyup="PF('ogrenciListvar').filter()" style="width:150px"
+									placeholder="" />
+							</p:outputPanel>
+						</f:facet>
+						<p:column filterBy="#{ogrenciList.ogrenciNo}"
+							headerText="Öğrenci No" filterMatchMode="contains"
+							filterStyle="width:50px">
+							<h:outputText value="#{ogrenciList.ogrenciNo}" />
+						</p:column>
+						<p:column headerText="Adı" filterBy="#{ogrenciList.ogrenciAdi}"
+							filterMatchMode="contains" filterStyle="width:50px">
+							<h:outputText value="#{ogrenciList.ogrenciAdi}" />
+						</p:column>
+						<p:column headerText="SoyAdi" filterBy="#{ogrenciList.soyAdi}"
+							filterMatchMode="contains" filterStyle="width:50px">
+							<h:outputText value="#{ogrenciList.soyAdi}" />
+						</p:column>
+						<p:column headerText="Sınıfı"
+							filterBy="#{ogrenciList.sinif.sinifAdi}"
+							filterMatchMode="contains" filterStyle="width:50px">
+							<h:outputText value="#{ogrenciList.sinif.sinifAdi}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">Güncelle</f:facet>
+							<p:commandButton id="updateRecord" update=":frmOgrenci:panel"
+								icon="fa fa-save">
+								<f:setPropertyActionListener value="#{ogrenciList}"
+									target="#{ogrenciBean.updateOgrenci}" />
+							</p:commandButton>
+						</p:column>
+						<p:column>
+							<f:facet name="header">Sil</f:facet>
+							<p:commandButton id="DeleteRecord"
+								update=":frmOgrenci:panel :frmOgrenci:growl" icon="fa fa-trash">
+								<f:setPropertyActionListener value="#{ogrenciList}"
+									target="#{ogrenciBean.deleteOgrenci}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</h:form>
+
+		</p:layoutUnit>
+	</p:layout>
+
+
+	<script type="text/javascript">
+		function start() {
+		    PF('statusDialog').show();
+		}
+		 
+		function stop() {
+		    PF('statusDialog').hide();
+		}
+		</script>
+</body>
+</html>
